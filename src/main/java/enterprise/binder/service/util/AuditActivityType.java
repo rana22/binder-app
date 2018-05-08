@@ -1,7 +1,7 @@
 /**
  * 
  */
-package enterprise.binder.domain;
+package enterprise.binder.service.util;
 
 /**
  * @author ambarrana

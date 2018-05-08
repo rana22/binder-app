@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import enterprise.binder.domain.Email;
@@ -27,6 +28,12 @@ public class EmailServiceImpl implements EmailService{
 		this.mailSender= mailSender;
 	}
 	
+//	@Scheduled(fixedDelay = 15000, initialDelay = 1000)
+//	public void sendEmailTest() {
+//		log.info("sending email scheduled");
+//		sendEmail(new Email());
+//	}
+	
 	@Override
 	public boolean sendEmail(Email email) {
 		// TODO Auto-generated method stub
@@ -34,10 +41,10 @@ public class EmailServiceImpl implements EmailService{
 		log.info("Sending email to {} ", email.getEmailTo());
 		if(email.getEmailTo() != null) {
 			SimpleMailMessage message = new SimpleMailMessage();
-	        message.setSubject(email.getSubject());
-	        message.setText(email.getContent());
-	        message.setTo(email.getEmailTo());
-	        message.setFrom(email.getSendFrom());
+	        message.setSubject("test example");
+	        message.setTo("ambar.rana123@gmail.com");
+	        message.setText("test content");
+	        message.setFrom("msg.service111@gmail.com");
 	        
 	        try {
 	        		mailSender.send(message);

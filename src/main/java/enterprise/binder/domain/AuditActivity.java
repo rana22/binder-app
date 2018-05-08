@@ -4,12 +4,15 @@
 package enterprise.binder.domain;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.joda.time.Instant;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -35,6 +38,9 @@ public class AuditActivity {
 	@GeneratedValue	
 	private Long id;
 	
+	@Column(name="event_date")
+	private Instant eventDate;
+	
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="user_id")
 	private UserProfile userProfile;
@@ -42,5 +48,4 @@ public class AuditActivity {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="document_id")
 	private Document document;
-
 }
