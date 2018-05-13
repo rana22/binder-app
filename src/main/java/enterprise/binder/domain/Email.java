@@ -3,6 +3,7 @@
  */
 package enterprise.binder.domain;
 
+import java.util.List;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -17,7 +18,7 @@ import lombok.Setter;
 @RequiredArgsConstructor
 public class Email {
 	
-	private String emailTo;
+	private List<String> emailTo;
 	private String subject;
 	private String content;
 	private String sendFrom;

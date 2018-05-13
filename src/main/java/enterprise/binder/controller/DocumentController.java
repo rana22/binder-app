@@ -37,14 +37,12 @@ public class DocumentController {
 	
 	private static final Logger log = LoggerFactory.getLogger(DocumentController.class);
 	
-	private final EmailServiceImpl emailService;
+//	private final EmailServiceImpl emailService;
 	
 	private final DocumentServiceImpl documentService;
 	
 	@Autowired
-	public DocumentController(final EmailServiceImpl emailService,
-							 final DocumentServiceImpl documentService) {
-		this.emailService = emailService;
+	public DocumentController(final DocumentServiceImpl documentService) {
 		this.documentService = documentService;
 	}
 	

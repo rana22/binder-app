@@ -3,6 +3,8 @@
  */
 package enterprise.binder.domain;
 
+import java.util.Map;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,8 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import org.hibernate.usertype.UserType;
 
+import org.hibernate.annotations.Type;
 import org.joda.time.Instant;
+//import com.vladmihalcea.hibernate.type.json.JsonBinaryType;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -32,6 +37,7 @@ import lombok.ToString;
 @RequiredArgsConstructor
 @ToString
 @EqualsAndHashCode
+//@TypeDefs({@TypeDefs(name="jsonb", typeClass = JsonBinaryType.class)})
 public class AuditActivity {
 	
 	@Id
@@ -48,4 +54,5 @@ public class AuditActivity {
 	@ManyToOne(cascade = CascadeType.PERSIST)
 	@JoinColumn(name="document_id")
 	private Document document;
+	
 }

@@ -3,12 +3,15 @@
  */
 package enterprise.binder.domain;
 
+import java.util.Map;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.swing.JPasswordField;
+
+import org.hibernate.annotations.Type;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
