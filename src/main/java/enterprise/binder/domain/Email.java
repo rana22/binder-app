@@ -17,7 +17,7 @@ import lombok.Setter;
 @Setter
 @RequiredArgsConstructor
 public class Email {
-	
+
 	private List<String> emailTo;
 	private String subject;
 	private String content;
