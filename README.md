@@ -21,3 +21,8 @@ request payload:
 "sendFrom" : "sender address"
 }
 ```
+3. Add authorization as basic auth with 
+```
+username - user
+password - password
+```
