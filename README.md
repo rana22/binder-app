@@ -2,7 +2,7 @@
 spring-boot, gradle, rabbit mq, microservices
 
 ### List of services
-#### 1. SMRP Email Services
+#### 1. SMTP Email Services
 
 # Project Set Up
 
