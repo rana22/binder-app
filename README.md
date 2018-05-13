@@ -1,9 +1,12 @@
 # binder-app
 spring-boot, gradle, rabbit mq, microservices
 
-## Project Set Up
+### List of services
+#### 1. SMRP Email Services
 
-# 1 Setting up SMTP mail service 
+# Project Set Up
+
+## 1 Setting up SMTP mail service 
 
 Set UP:
 1. Set up local smtp server using your email id 
