@@ -9,7 +9,13 @@ spring-boot, gradle, rabbit mq, microservices
 ## 1 Setting up SMTP mail service 
 
 Set UP:
-1. Set up local smtp server using your email id 
+1. Set up local smtp server using your email id - run following command on terminal 
+```
+postfix stop
+postfix start
+telnet localhost 25
+```
+-smtp server rum on port 25
 2. make post call to check if the application is running 
 ```
 url: localhost:8080/binder/email
