@@ -1,3 +1,4 @@
+
 buildscript {
 	ext {
 		springBootVersion = '2.0.1.RELEASE'
@@ -8,8 +9,11 @@ buildscript {
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath("se.transmode.gradle:gradle-docker:1.2")
 	}
 }
+
+
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
@@ -17,6 +21,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'jacoco'
 //apply plugin: 'checkstyle'
+apply plugin: 'docker'
 
 group = 'enterprise'
 version = '0.0.1-SNAPSHOT'
@@ -27,16 +32,31 @@ repositories {
 }
 
 dependencies {
+	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-amqp')
 	compile('org.springframework.boot:spring-boot-starter-data-elasticsearch')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-mail')
-	compile('org.hibernate:hibernate-jcache')
+	compile('org.hibernate:hibernate-core:5.2.16.Final')
+	compile('com.google.code.gson:gson:2.8.4')
+	//compile('org.hibernate:hibernate-annotations:3.5.6-Final')
 	//compile('com.vladmihalcea:hibernate-types-52-52:1.2.0')
 	runtime('org.postgresql:postgresql')
 	compileOnly('org.projectlombok:lombok')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.security:spring-security-test')
+}
+
+
+task buildDocker(type: Docker, dependsOn: build){
+	applicationName = jar.baseName
+	dockerfile = file("src/main/docker/Dockerfile")
+	doFirst{
+		copy{
+			from jar
+			into stageDir
+		}
+	}
 }
