@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package enterprise.binder.controller;
 
@@ -19,31 +19,31 @@ import enterprise.binder.service.EmailServiceImpl;
 
 /**
  * @author ambarrana
- *
  */
 @RestController
 @RequestMapping("/binder/email")
 public class EmailController {
 
-	private static final Logger log = LoggerFactory.getLogger(EmailController.class);
+    private static final Logger log = LoggerFactory.getLogger(EmailController.class);
 
-	private final EmailServiceImpl emailService;
+    private final EmailServiceImpl emailService;
 
-	private final ApplicationProperties applicationProperties;
+    private final ApplicationProperties applicationProperties;
 
-	@Autowired
-	public EmailController(final EmailServiceImpl emailService, final ApplicationProperties applicationProperties) {
-		this.emailService = emailService;
-		this.applicationProperties = applicationProperties;
-	}
+    @Autowired
+    public EmailController(final EmailServiceImpl emailService,
+                           final ApplicationProperties applicationProperties) {
+        this.emailService = emailService;
+        this.applicationProperties = applicationProperties;
+    }
 
-	@PostMapping
-	public ResponseEntity<Boolean> postEmail(@RequestBody Email email) {
+    @PostMapping
+    public ResponseEntity<Boolean> postEmail(@RequestBody Email email) {
 
-		log.info("Start sending email for {} ", email.getEmailTo().get(0));
-		boolean success = false;
-		success = emailService.sendEmail(email);
-		return ResponseEntity.ok(success);
-	}
+        log.info("Start sending email for {} ", email.getEmailTo().get(0));
+        boolean success = false;
+        success = emailService.sendEmail(email);
+        return ResponseEntity.ok(success);
+    }
 
 }

@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package enterprise.binder.service;
 
@@ -11,14 +11,13 @@ import enterprise.binder.domain.UserProfile;
 
 /**
  * @author ambarrana
- *
  */
 public abstract class DocumentService {
-	
-	public abstract boolean saveDocument(DocumentDetails documentDetails, UserProfile user);
-	
-	public abstract Optional<DocumentDetails> findByOne(Long id);
-	
-	public abstract List<DocumentDetails> retriveAllDocument();
+
+    public abstract boolean saveDocument(DocumentDetails documentDetails, UserProfile user);
+
+    public abstract Optional<DocumentDetails> findByOne(Long id);
+
+    public abstract List<DocumentDetails> retrieveAllDocument();
 
 }

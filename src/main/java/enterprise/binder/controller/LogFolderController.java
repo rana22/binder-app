@@ -51,7 +51,7 @@ public class LogFolderController {
 			if(file != null) {
 				HttpHeaders headers = new HttpHeaders();
 				headers.setContentType(MediaType.parseMediaType(CONTENT_TYPE));
-				headers.add("Content-Disposition", String.format("attachement; filaname\"%s\"", file.getName()));
+				headers.add("Content-Disposition", String.format("attachment; filaname\"%s\"", file.getName()));
 				
 				return ResponseEntity.ok()
 						.headers(headers)
@@ -61,7 +61,7 @@ public class LogFolderController {
 						
 				}
 			} catch(IOException e) {
-				log.debug("Exception while retriving log.zip file {}",e.getMessage());
+				log.debug("Exception while retrieving log.zip file {}",e.getMessage());
 				throw new UncheckedIOException(e);
 		}
 		

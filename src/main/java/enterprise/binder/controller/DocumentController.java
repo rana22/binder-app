@@ -62,7 +62,7 @@ public class DocumentController {
 	
 	@GetMapping("/all")
 	public ResponseEntity<List<DocumentDetails>> getUserDocuments(){
-		List<DocumentDetails>  documents = documentService.retriveAllDocument();
+		List<DocumentDetails>  documents = documentService.retrieveAllDocument();
 		log.info("get all the documents {}", documents.size());
 		return ResponseEntity.ok(documents);
 	}

@@ -17,70 +17,67 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author ambarrana implements EmailService, class used to consuming
- *         JavaMailSender for sending different Alert emails
+ * JavaMailSender for sending different Alert emails
  */
 
 @Slf4j
 @Service
-public class EmailServiceImpl implements EmailService {
+public class EmailServiceImpl {
 
-	private final JavaMailSender mailSender;
+    private final JavaMailSender mailSender;
 
-	@Autowired
-	public EmailServiceImpl(final JavaMailSender mailSender) {
-		this.mailSender = mailSender;
-	}
+    @Autowired
+    public EmailServiceImpl(final JavaMailSender mailSender) {
+        this.mailSender = mailSender;
+    }
 
-	/**
-	 * method for sending email - java mail sender
-	 * 
-	 * @param email
-	 *            provides email content (subject, content, sentfrom)
-	 */
-	@Override
-	public boolean sendEmail(Email email) {
+    /**
+     * method for sending email - java mail sender
+     *
+     * @param email provides email content (subject, content, sentfrom)
+     */
+    public boolean sendEmail(Email email) {
 
-		boolean success = false;
-		Address[] receivers = getReceiversAddress(email.getEmailTo());
+        boolean success = false;
+        Address[] receivers = getReceiversAddress(email.getEmailTo());
 
-		if (receivers != null && receivers.length > 0) {
-			try {
-				MimeMessage message = mailSender.createMimeMessage();
-				message.setText(email.getContent());
-				message.setSubject(email.getSubject());
-				message.setFrom("localhost");
-				message.setRecipients(Message.RecipientType.TO, receivers);
+        if (receivers != null && receivers.length > 0) {
+            try {
+                MimeMessage message = mailSender.createMimeMessage();
+                message.setText(email.getContent());
+                message.setSubject(email.getSubject());
+                message.setFrom("localhost");
+                message.setRecipients(Message.RecipientType.TO, receivers);
 
-				mailSender.send(message);
-				success = true;
-			} catch (MessagingException ex) {
-				log.warn("Exception sending email {}", ex.getMessage());
-			}
-		}
+                mailSender.send(message);
+                success = true;
+            } catch (MessagingException ex) {
+                log.warn("Exception sending email {}", ex.getMessage());
+            }
+        }
 
-		return success;
-	}
+        return success;
+    }
 
-	/**
-	 * methods converts string email address to Address[] for email to be sent
-	 * 
-	 * @param takes
-	 *            string list and return Address list
-	 */
+    /**
+     * methods converts string email address to Address[] for email to be sent
+     *
+     * @param emailsTo string list and return Address list
+     */
 
-	private Address[] getReceiversAddress(List<String> emailsTo) {
+    private Address[] getReceiversAddress(List<String> emailsTo) {
 
-		List<Address> receivers = new ArrayList<>();
-		for (String email : emailsTo) {
-			try {
-				InternetAddress emailId = new InternetAddress(email);
-				emailId.validate();
-				receivers.add(emailId);
-			} catch (AddressException e) {
-				log.warn("Invalid email address: {} with exception {} ", e.getMessage());
-			}
-		}
-		return receivers.toArray(new InternetAddress[receivers.size()]);
-	}
+        List<Address> receivers = new ArrayList<>();
+        for (String email : emailsTo) {
+            try {
+                InternetAddress emailId = new InternetAddress(email);
+                emailId.validate();
+                receivers.add(emailId);
+            } catch (AddressException e) {
+                log.warn("Invalid email address: {} with exception {} ", e.getMessage());
+            }
+        }
+        return receivers.toArray(new InternetAddress[receivers.size()]);
+    }
 
 }
