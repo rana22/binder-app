@@ -3,6 +3,7 @@
  */
 package enterprise.binder.service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,7 +15,7 @@ import enterprise.binder.domain.UserProfile;
  */
 public abstract class DocumentService {
 
-    public abstract boolean saveDocument(DocumentDetails documentDetails, UserProfile user);
+    public abstract boolean saveDocument(DocumentDetails documentDetails) throws IOException;
 
     public abstract Optional<DocumentDetails> findByOne(Long id);
 

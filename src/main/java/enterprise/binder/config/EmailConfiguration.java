@@ -19,7 +19,6 @@ import lombok.extern.slf4j.Slf4j;
  */
 
 @Configuration
-@Slf4j
 public class EmailConfiguration {
 
 	private static final String TRANSPORT_PROTOCOL = "mail.transport.protocol";

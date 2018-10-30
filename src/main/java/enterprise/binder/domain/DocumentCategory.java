@@ -7,14 +7,14 @@ package enterprise.binder.domain;
  * @author ambarrana
  *
  */
-public final class DocumentCategory {
+public class DocumentCategory {
 	
 	enum Insurance{
-		AUTO,
-		HOUSE,
-		HEALTH,
-		DENTAL,
-		VISION
+		AUTO_INSURANCE,
+		HOUSE_INSURANCE,
+		HEALTH_INSURANCE,
+		DENTAL_INSURANCE,
+		VISION_INSURANCE
 	}
 	
 	enum Personal{
@@ -22,9 +22,9 @@ public final class DocumentCategory {
 	}
 	
 	enum Bills{
-		ELECTRIC,
-		WATER,
-		INTERNATE
+		ELECTRIC_BILL,
+		WATER_BILL,
+		INTERNATE_BILL
 	}
 	
 	enum Education{

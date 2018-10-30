@@ -25,7 +25,7 @@ apply plugin: 'docker'
 
 group = 'enterprise'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 10
+sourceCompatibility = 8
 
 repositories {
 	mavenCentral()
@@ -60,8 +60,11 @@ dependencies {
 	compile('com.google.code.gson:gson:2.7')
 	compile('com.vladmihalcea:hibernate-types-52:2.1.1')
 	compile('com.adeptj:adeptj-runtime-tools:1.0.5.Final')
+	compile('org.jacoco:jacoco-maven-plugin:0.8.1')
+	compile('org.jacoco:org.jacoco.agent:0.8.1')
 	runtime('org.postgresql:postgresql')
 	compileOnly('org.projectlombok:lombok')
+	compile('org.springframework.boot:spring-boot-starter-quartz')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.security:spring-security-test')
 }
